@@ -60,3 +60,7 @@ jobs:
       - name: Run unit tests
         run: |
           ssh librivox.org 'cd /librivox/www/librivox.org/catalog && XDEBUG_MODE=coverage vendor/bin/phpunit -c application/tests'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phpunit
+          path: /librivox/www/librivox.org/catalog/tests/build/
