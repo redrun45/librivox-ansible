@@ -112,6 +112,14 @@
   become: true
   notify: Restart PHP
 
+- name: php.ini - No default caching preference
+  lineinfile:
+   dest: /etc/php/8.1/fpm/php.ini
+   regexp: '^session.cache_limiter =.*'
+   line: 'session.cache_limiter = ""'
+  become: true
+  notify: Restart PHP
+
 # Shared directories
 
 - name: /librivox/shared/uploads directory
